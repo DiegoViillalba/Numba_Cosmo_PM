@@ -29,6 +29,13 @@ from pm_cosmo import config as cfg
 from pm_cosmo.simulation import Simulation, RunConfig
 from pm_cosmo.timer import StageTimer
 
+# Importar numba config para poder cambiar threads dinámicamente
+try:
+    from numba import config as numba_config
+    NUMBA_AVAILABLE = True
+except ImportError:
+    NUMBA_AVAILABLE = False
+
 
 def run_one(n_workers: int, n_steps: int, ng: int) -> dict:
     """
@@ -40,6 +47,10 @@ def run_one(n_workers: int, n_steps: int, ng: int) -> dict:
     n_steps   : pasos de simulación
     ng        : tamaño de malla
     """
+    # ⚠️ CRÍTICO: Configurar threads de numba ANTES de cualquier cálculo
+    if NUMBA_AVAILABLE:
+        numba_config.NUMBA_NUM_THREADS = n_workers
+
     # Configurar NG dinámicamente
     cfg.NG          = ng
     cfg.NP          = ng

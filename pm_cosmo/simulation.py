@@ -66,9 +66,14 @@ class Simulation:
         self.state  = SimState()
         self.timer  = StageTimer()
 
-        # Configurar número de workers de numba
-        if cfg_run.n_workers > 1:
-            os.environ["NUMBA_NUM_THREADS"] = str(cfg_run.n_workers)
+        # Configurar número de workers de numba (usando API, no variables de entorno)
+        # Nota: También debe configurarse ANTES de importar numba en run_bench.py
+        try:
+            from numba import config as numba_config
+            if cfg_run.n_workers >= 1:
+                numba_config.NUMBA_NUM_THREADS = cfg_run.n_workers
+        except ImportError:
+            pass
 
         Path(cfg_run.output_dir).mkdir(parents=True, exist_ok=True)
 
