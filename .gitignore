@@ -45,6 +45,7 @@ htmlcov/
 
 # Binary files
 *.bin
+*.dat
 
 # Project-specific
 resultados/
