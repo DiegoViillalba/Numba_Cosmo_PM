@@ -32,7 +32,7 @@ from .gradient import compute_gradient
 from .force_interp import interpolate_force
 from .integrator import leapfrog_step, leapfrog_half_kick
 from .diagnostics import compute_diagnostics, print_diagnostics
-from .output import (write_snapshot_ascii, write_snapshot_binary,
+from .output import (write_snapshot_ascii, write_snapshot_binary,write_snapshot_hdf5_gadget,
                      append_diagnostics_csv)
 from . import config as cfg
 
@@ -196,4 +196,5 @@ class Simulation:
         if self.cfg.use_ascii:
             write_snapshot_ascii(self.state, name + ".dat")
         else:
-            write_snapshot_binary(self.state, name + ".bin")
+            # write_snapshot_binary(self.state, name + ".bin")
+            write_snapshot_hdf5_gadget(self.state, name + ".hdf5")

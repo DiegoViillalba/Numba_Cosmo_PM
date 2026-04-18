@@ -4,5 +4,6 @@
 numpy>=1.24
 scipy>=1.10          # opcional, para análisis de resultados
 numba>=0.57          # paralelismo con prange (altamente recomendado)
+h5py>=3.0            # para exportar snapshots en HDF5 (compatible con Gadget)
 pytest>=7.0          # suite de tests
 pytest-cov>=4.0      # cobertura de tests (opcional)

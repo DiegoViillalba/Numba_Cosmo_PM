@@ -32,7 +32,7 @@ N_CELLS: int = NG ** 3                                # total de celdas
 # ──────────────────────────────────────────────────────────────────
 L_BOX: float = 100.0                # tamaño físico en Mpc/h
 CELL_SIZE: float = L_BOX / NG       # tamaño de celda en Mpc/h
-
+GRID_SIZE: float = L_BOX           # tamaño de la caja para condiciones periódicas
 # ──────────────────────────────────────────────────────────────────
 # Integración temporal
 # ──────────────────────────────────────────────────────────────────
@@ -47,7 +47,7 @@ G_GRAV: float = 1.0
 # ──────────────────────────────────────────────────────────────────
 # Salida
 # ──────────────────────────────────────────────────────────────────
-SNAP_INTERVAL: int = 10   # cada cuántos pasos se escribe un snapshot
+SNAP_INTERVAL: int = 50   # cada cuántos pasos se escribe un snapshot
 
 # ──────────────────────────────────────────────────────────────────
 # Softening gravitacional
