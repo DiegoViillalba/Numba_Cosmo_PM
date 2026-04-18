@@ -1,0 +1,8 @@
+# pm_cosmo — Python dependencies
+# Instalación: pip install -r requirements.txt
+
+numpy>=1.24
+scipy>=1.10          # opcional, para análisis de resultados
+numba>=0.57          # paralelismo con prange (altamente recomendado)
+pytest>=7.0          # suite de tests
+pytest-cov>=4.0      # cobertura de tests (opcional)
